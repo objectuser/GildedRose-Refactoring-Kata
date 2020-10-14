@@ -16,8 +16,7 @@ defmodule GildedRose do
           %{quality: quality} = item ->
             %{item | quality: quality + 1}
         end).()
-    |> normalize_quality()
-    |> decrement_sell_in()
+    |> roll_day()
   end
 
   def update_item(%Item{name: "Backstage passes to a TAFKAL80ETC concert"} = item) do
@@ -25,9 +24,6 @@ defmodule GildedRose do
     |> (fn
           %{sell_in: sell_in} = item when sell_in <= 0 ->
             %{item | quality: 0}
-
-          %{quality: quality} = item when quality >= 50 ->
-            item
 
           %{quality: quality, sell_in: sell_in} = item when sell_in < 6 ->
             %{item | quality: quality + 3}
@@ -38,8 +34,7 @@ defmodule GildedRose do
           %{quality: quality} = item ->
             %{item | quality: quality + 1}
         end).()
-    |> normalize_quality()
-    |> decrement_sell_in()
+    |> roll_day()
   end
 
   def update_item(%Item{name: "Sulfuras, Hand of Ragnaros"} = item), do: item
@@ -53,6 +48,12 @@ defmodule GildedRose do
           %{quality: quality} = item ->
             %{item | quality: quality - 1}
         end).()
+    |> roll_day()
+  end
+
+  # normalize data and roll to the next day
+  defp roll_day(item) do
+    item
     |> decrement_sell_in()
     |> normalize_quality()
   end
