@@ -29,7 +29,7 @@ defmodule GildedRoseTest do
     assert [
              %Item{
                name: "Aged Brie",
-               quality: 51,
+               quality: 50,
                sell_in: -2
              }
            ] ==

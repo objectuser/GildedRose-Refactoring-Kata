@@ -1,29 +1,15 @@
 defmodule ItemRule do
   def update_item(%Item{name: "Aged Brie"} = item) do
-    item =
-      cond do
-        item.quality < 50 ->
-          %{item | quality: item.quality + 1}
+    item
+    |> (fn
+          %{quality: quality, sell_in: sell_in} = item when sell_in <= 0 ->
+            %{item | quality: quality + 2}
 
-        true ->
-          item
-      end
-
-    item = decrement_sell_in(item)
-
-    cond do
-      item.sell_in < 0 ->
-        cond do
-          item.quality < 50 ->
-            %{item | quality: item.quality + 1}
-
-          true ->
-            item
-        end
-
-      true ->
-        item
-    end
+          %{quality: quality} = item ->
+            %{item | quality: quality + 1}
+        end).()
+    |> normalize_quality()
+    |> decrement_sell_in()
   end
 
   def update_item(%Item{name: "Backstage passes to a TAFKAL80ETC concert"} = item) do
@@ -44,7 +30,7 @@ defmodule ItemRule do
           %{quality: quality} = item ->
             %{item | quality: quality + 1}
         end).()
-    |> (fn %{quality: quality} = item -> %{item | quality: min(quality, 50)} end).()
+    |> normalize_quality()
     |> decrement_sell_in()
   end
 
@@ -75,5 +61,7 @@ defmodule ItemRule do
     end
   end
 
-  defp decrement_sell_in(item), do: %{item | sell_in: item.sell_in - 1}
+  defp decrement_sell_in(%{sell_in: sell_in} = item), do: %{item | sell_in: sell_in - 1}
+
+  defp normalize_quality(%{quality: quality} = item), do: %{item | quality: min(quality, 50)}
 end
