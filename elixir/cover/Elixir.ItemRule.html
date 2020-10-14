@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.ItemRule.html</code></h1>
-<footer><p>File generated from <code>/Users/Kevin/Documents/Projects/gilded-rose-kata/GildedRose-Refactoring-Kata/elixir/lib/item_rule.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-10-14 at 11:28:15</p></footer>
+<footer><p>File generated from <code>/Users/Kevin/Documents/Projects/gilded-rose-kata/GildedRose-Refactoring-Kata/elixir/lib/item_rule.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-10-14 at 11:37:22</p></footer>
 <table>
 <tbody>
 <tr>
@@ -301,143 +301,83 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>  def update_item(item) do</code></td>
 </tr>
-<tr class="hit">
+<tr>
 <td class="line" id="L40"><a href="#L40">40</a></td>
-<td class="hits">3</td>
-<td class="source"><code>    item =</code></td>
+<td class="hits"></td>
+<td class="source"><code>    item</code></td>
 </tr>
-<tr class="hit">
+<tr>
 <td class="line" id="L41"><a href="#L41">41</a></td>
-<td class="hits">3</td>
-<td class="source"><code>      if item.quality &gt; 0 do</code></td>
+<td class="hits"></td>
+<td class="source"><code>    |&gt; (fn %{quality: quality, sell_in: sell_in} = item when sell_in &lt;=0 -&gt;</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L42"><a href="#L42">42</a></td>
 <td class="hits">2</td>
-<td class="source"><code>        %{item | quality: item.quality - 1}</code></td>
+<td class="source"><code>%{item | quality: quality - 2}</code></td>
 </tr>
 <tr>
 <td class="line" id="L43"><a href="#L43">43</a></td>
 <td class="hits"></td>
-<td class="source"><code>      else</code></td>
+<td class="source"><code>      %{quality: quality} = item -&gt;</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L44"><a href="#L44">44</a></td>
 <td class="hits">1</td>
-<td class="source"><code>        item</code></td>
+<td class="source"><code>        %{item | quality: quality - 1}</code></td>
 </tr>
 <tr>
 <td class="line" id="L45"><a href="#L45">45</a></td>
 <td class="hits"></td>
-<td class="source"><code>      end</code></td>
+<td class="source"><code>    end).()</code></td>
 </tr>
 <tr>
 <td class="line" id="L46"><a href="#L46">46</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="source"><code>    |&gt; decrement_sell_in()</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L47"><a href="#L47">47</a></td>
 <td class="hits">3</td>
-<td class="source"><code>    item = decrement_sell_in(item)</code></td>
+<td class="source"><code>    |&gt; normalize_quality()</code></td>
 </tr>
 <tr>
 <td class="line" id="L48"><a href="#L48">48</a></td>
 <td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L49"><a href="#L49">49</a></td>
-<td class="hits">3</td>
-<td class="source"><code>    cond do</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L50"><a href="#L50">50</a></td>
-<td class="hits">3</td>
-<td class="source"><code>      item.sell_in &lt; 0 -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L51"><a href="#L51">51</a></td>
-<td class="hits">2</td>
-<td class="source"><code>        cond do</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L52"><a href="#L52">52</a></td>
-<td class="hits">2</td>
-<td class="source"><code>          item.quality &gt; 0 -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L53"><a href="#L53">53</a></td>
-<td class="hits">1</td>
-<td class="source"><code>            %{item | quality: item.quality - 1}</code></td>
-</tr>
-<tr>
-<td class="line" id="L54"><a href="#L54">54</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L55"><a href="#L55">55</a></td>
-<td class="hits">1</td>
-<td class="source"><code>          true -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L56"><a href="#L56">56</a></td>
-<td class="hits">1</td>
-<td class="source"><code>            item</code></td>
-</tr>
-<tr>
-<td class="line" id="L57"><a href="#L57">57</a></td>
-<td class="hits"></td>
-<td class="source"><code>        end</code></td>
-</tr>
-<tr>
-<td class="line" id="L58"><a href="#L58">58</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L59"><a href="#L59">59</a></td>
-<td class="hits">1</td>
-<td class="source"><code>      true -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L60"><a href="#L60">60</a></td>
-<td class="hits">1</td>
-<td class="source"><code>        item</code></td>
-</tr>
-<tr>
-<td class="line" id="L61"><a href="#L61">61</a></td>
-<td class="hits"></td>
-<td class="source"><code>    end</code></td>
-</tr>
-<tr>
-<td class="line" id="L62"><a href="#L62">62</a></td>
-<td class="hits"></td>
 <td class="source"><code>  end</code></td>
 </tr>
 <tr>
-<td class="line" id="L63"><a href="#L63">63</a></td>
+<td class="line" id="L49"><a href="#L49">49</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L64"><a href="#L64">64</a></td>
+<td class="line" id="L50"><a href="#L50">50</a></td>
 <td class="hits">11</td>
 <td class="source"><code>  defp decrement_sell_in(%{sell_in: sell_in} = item), do: %{item | sell_in: sell_in - 1}</code></td>
 </tr>
 <tr>
-<td class="line" id="L65"><a href="#L65">65</a></td>
+<td class="line" id="L51"><a href="#L51">51</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
+<tr>
+<td class="line" id="L52"><a href="#L52">52</a></td>
+<td class="hits"></td>
+<td class="source"><code>  defp normalize_quality(%{quality: quality} = item) do</code></td>
+</tr>
 <tr class="hit">
-<td class="line" id="L66"><a href="#L66">66</a></td>
-<td class="hits">8</td>
-<td class="source"><code>  defp normalize_quality(%{quality: quality} = item), do: %{item | quality: min(quality, 50)}</code></td>
+<td class="line" id="L53"><a href="#L53">53</a></td>
+<td class="hits">11</td>
+<td class="source"><code>    %{item | quality: (quality |&gt; min(50) |&gt; max(0))}</code></td>
 </tr>
 <tr>
-<td class="line" id="L67"><a href="#L67">67</a></td>
+<td class="line" id="L54"><a href="#L54">54</a></td>
+<td class="hits"></td>
+<td class="source"><code>  end</code></td>
+</tr>
+<tr>
+<td class="line" id="L55"><a href="#L55">55</a></td>
 <td class="hits"></td>
 <td class="source"><code>end</code></td>
 </tr>

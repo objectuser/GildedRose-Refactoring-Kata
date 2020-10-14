@@ -37,31 +37,22 @@ defmodule ItemRule do
   def update_item(%Item{name: "Sulfuras, Hand of Ragnaros"} = item), do: item
 
   def update_item(item) do
-    item =
-      if item.quality > 0 do
-        %{item | quality: item.quality - 1}
-      else
-        item
-      end
+    item
+    |> (fn
+          %{quality: quality, sell_in: sell_in} = item when sell_in <= 0 ->
+            %{item | quality: quality - 2}
 
-    item = decrement_sell_in(item)
-
-    cond do
-      item.sell_in < 0 ->
-        cond do
-          item.quality > 0 ->
-            %{item | quality: item.quality - 1}
-
-          true ->
-            item
-        end
-
-      true ->
-        item
-    end
+          %{quality: quality} = item ->
+            %{item | quality: quality - 1}
+        end).()
+    |> decrement_sell_in()
+    |> normalize_quality()
   end
 
   defp decrement_sell_in(%{sell_in: sell_in} = item), do: %{item | sell_in: sell_in - 1}
 
-  defp normalize_quality(%{quality: quality} = item), do: %{item | quality: min(quality, 50)}
+  # Quality is always between 0 and 50
+  defp normalize_quality(%{quality: quality} = item) do
+    %{item | quality: quality |> min(50) |> max(0)}
+  end
 end
