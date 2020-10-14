@@ -61,6 +61,18 @@ defmodule GildedRoseTest do
              |> GildedRose.update_quality()
   end
 
+  test "update backstage pass super quality" do
+    assert [
+             %Item{
+               name: "Backstage passes to a TAFKAL80ETC concert",
+               quality: 50,
+               sell_in: 4
+             }
+           ] ==
+             [%Item{name: "Backstage passes to a TAFKAL80ETC concert", quality: 50, sell_in: 5}]
+             |> GildedRose.update_quality()
+  end
+
   test "update backstage pass getting close" do
     assert [
              %Item{
