@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.ItemRule.html</code></h1>
-<footer><p>File generated from <code>/Users/Kevin/Documents/Projects/gilded-rose-kata/GildedRose-Refactoring-Kata/elixir/lib/item_rule.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-10-14 at 07:36:39</p></footer>
+<footer><p>File generated from <code>/Users/Kevin/Documents/Projects/gilded-rose-kata/GildedRose-Refactoring-Kata/elixir/lib/item_rule.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-10-14 at 07:41:29</p></footer>
 <table>
 <tbody>
 <tr>
@@ -496,213 +496,148 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L79"><a href="#L79">79</a></td>
+<td class="hits">2</td>
+<td class="source"><code>  def update_item(%Item{name: "Sulfuras, Hand of Ragnaros"} = item), do: item</code></td>
+</tr>
+<tr>
+<td class="line" id="L80"><a href="#L80">80</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L81"><a href="#L81">81</a></td>
 <td class="hits"></td>
 <td class="source"><code>  def update_item(item) do</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L80"><a href="#L80">80</a></td>
-<td class="hits">5</td>
+<td class="line" id="L82"><a href="#L82">82</a></td>
+<td class="hits">3</td>
 <td class="source"><code>    item =</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L81"><a href="#L81">81</a></td>
-<td class="hits">5</td>
+<td class="line" id="L83"><a href="#L83">83</a></td>
+<td class="hits">3</td>
 <td class="source"><code>      if item.quality &gt; 0 do</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L82"><a href="#L82">82</a></td>
-<td class="hits">4</td>
-<td class="source"><code>        if item.name != "Sulfuras, Hand of Ragnaros" do</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L83"><a href="#L83">83</a></td>
+<td class="line" id="L84"><a href="#L84">84</a></td>
 <td class="hits">2</td>
 <td class="source"><code>          %{item | quality: item.quality - 1}</code></td>
 </tr>
 <tr>
-<td class="line" id="L84"><a href="#L84">84</a></td>
-<td class="hits"></td>
-<td class="source"><code>        else</code></td>
-</tr>
-<tr class="hit">
 <td class="line" id="L85"><a href="#L85">85</a></td>
-<td class="hits">2</td>
-<td class="source"><code>          item</code></td>
-</tr>
-<tr>
-<td class="line" id="L86"><a href="#L86">86</a></td>
-<td class="hits"></td>
-<td class="source"><code>        end</code></td>
-</tr>
-<tr>
-<td class="line" id="L87"><a href="#L87">87</a></td>
 <td class="hits"></td>
 <td class="source"><code>      else</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L88"><a href="#L88">88</a></td>
+<td class="line" id="L86"><a href="#L86">86</a></td>
 <td class="hits">1</td>
 <td class="source"><code>        item</code></td>
 </tr>
 <tr>
-<td class="line" id="L89"><a href="#L89">89</a></td>
+<td class="line" id="L87"><a href="#L87">87</a></td>
 <td class="hits"></td>
 <td class="source"><code>      end</code></td>
 </tr>
 <tr>
-<td class="line" id="L90"><a href="#L90">90</a></td>
+<td class="line" id="L88"><a href="#L88">88</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L91"><a href="#L91">91</a></td>
-<td class="hits">5</td>
+<td class="line" id="L89"><a href="#L89">89</a></td>
+<td class="hits">3</td>
 <td class="source"><code>    item =</code></td>
 </tr>
-<tr>
-<td class="line" id="L92"><a href="#L92">92</a></td>
-<td class="hits"></td>
-<td class="source"><code>      cond do</code></td>
-</tr>
 <tr class="hit">
-<td class="line" id="L93"><a href="#L93">93</a></td>
-<td class="hits">5</td>
-<td class="source"><code>        item.name != "Sulfuras, Hand of Ragnaros" -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L94"><a href="#L94">94</a></td>
+<td class="line" id="L90"><a href="#L90">90</a></td>
 <td class="hits">3</td>
 <td class="source"><code>          %{item | sell_in: item.sell_in - 1}</code></td>
 </tr>
 <tr>
-<td class="line" id="L95"><a href="#L95">95</a></td>
+<td class="line" id="L91"><a href="#L91">91</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L96"><a href="#L96">96</a></td>
-<td class="hits">2</td>
-<td class="source"><code>        true -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L97"><a href="#L97">97</a></td>
-<td class="hits">2</td>
-<td class="source"><code>          item</code></td>
-</tr>
-<tr>
-<td class="line" id="L98"><a href="#L98">98</a></td>
-<td class="hits"></td>
-<td class="source"><code>      end</code></td>
-</tr>
-<tr>
-<td class="line" id="L99"><a href="#L99">99</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L100"><a href="#L100">100</a></td>
-<td class="hits">5</td>
+<td class="line" id="L92"><a href="#L92">92</a></td>
+<td class="hits">3</td>
 <td class="source"><code>    cond do</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L101"><a href="#L101">101</a></td>
-<td class="hits">5</td>
+<td class="line" id="L93"><a href="#L93">93</a></td>
+<td class="hits">3</td>
 <td class="source"><code>      item.sell_in &lt; 0 -&gt;</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L102"><a href="#L102">102</a></td>
-<td class="hits">3</td>
+<td class="line" id="L94"><a href="#L94">94</a></td>
+<td class="hits">2</td>
 <td class="source"><code>        cond do</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L103"><a href="#L103">103</a></td>
-<td class="hits">3</td>
+<td class="line" id="L95"><a href="#L95">95</a></td>
+<td class="hits">2</td>
 <td class="source"><code>          item.quality &gt; 0 -&gt;</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L104"><a href="#L104">104</a></td>
-<td class="hits">2</td>
-<td class="source"><code>            cond do</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L105"><a href="#L105">105</a></td>
-<td class="hits">2</td>
-<td class="source"><code>              item.name != "Sulfuras, Hand of Ragnaros" -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L106"><a href="#L106">106</a></td>
+<td class="line" id="L96"><a href="#L96">96</a></td>
 <td class="hits">1</td>
 <td class="source"><code>                %{item | quality: item.quality - 1}</code></td>
 </tr>
 <tr>
-<td class="line" id="L107"><a href="#L107">107</a></td>
+<td class="line" id="L97"><a href="#L97">97</a></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
+</tr>
+<tr>
+<td class="line" id="L98"><a href="#L98">98</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L108"><a href="#L108">108</a></td>
-<td class="hits">1</td>
-<td class="source"><code>              true -&gt;</code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L109"><a href="#L109">109</a></td>
-<td class="hits">1</td>
-<td class="source"><code>                item</code></td>
-</tr>
-<tr>
-<td class="line" id="L110"><a href="#L110">110</a></td>
-<td class="hits"></td>
-<td class="source"><code>            end</code></td>
-</tr>
-<tr>
-<td class="line" id="L111"><a href="#L111">111</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L112"><a href="#L112">112</a></td>
+<td class="line" id="L99"><a href="#L99">99</a></td>
 <td class="hits">1</td>
 <td class="source"><code>          true -&gt;</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L113"><a href="#L113">113</a></td>
+<td class="line" id="L100"><a href="#L100">100</a></td>
 <td class="hits">1</td>
 <td class="source"><code>            item</code></td>
 </tr>
 <tr>
-<td class="line" id="L114"><a href="#L114">114</a></td>
+<td class="line" id="L101"><a href="#L101">101</a></td>
 <td class="hits"></td>
 <td class="source"><code>        end</code></td>
 </tr>
 <tr>
-<td class="line" id="L115"><a href="#L115">115</a></td>
+<td class="line" id="L102"><a href="#L102">102</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L116"><a href="#L116">116</a></td>
-<td class="hits">2</td>
+<td class="line" id="L103"><a href="#L103">103</a></td>
+<td class="hits">1</td>
 <td class="source"><code>      true -&gt;</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L117"><a href="#L117">117</a></td>
-<td class="hits">2</td>
+<td class="line" id="L104"><a href="#L104">104</a></td>
+<td class="hits">1</td>
 <td class="source"><code>        item</code></td>
 </tr>
 <tr>
-<td class="line" id="L118"><a href="#L118">118</a></td>
+<td class="line" id="L105"><a href="#L105">105</a></td>
 <td class="hits"></td>
 <td class="source"><code>    end</code></td>
 </tr>
 <tr>
-<td class="line" id="L119"><a href="#L119">119</a></td>
+<td class="line" id="L106"><a href="#L106">106</a></td>
 <td class="hits"></td>
 <td class="source"><code>  end</code></td>
 </tr>
 <tr>
-<td class="line" id="L120"><a href="#L120">120</a></td>
+<td class="line" id="L107"><a href="#L107">107</a></td>
 <td class="hits"></td>
 <td class="source"><code>end</code></td>
 </tr>
