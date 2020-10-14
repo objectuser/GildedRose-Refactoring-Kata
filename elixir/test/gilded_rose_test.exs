@@ -97,7 +97,6 @@ defmodule GildedRoseTest do
              |> GildedRose.update_quality()
   end
 
-
   test "update sulfuras" do
     assert [
              %Item{
@@ -109,7 +108,6 @@ defmodule GildedRoseTest do
              [%Item{name: "Sulfuras, Hand of Ragnaros", quality: 80, sell_in: 9}]
              |> GildedRose.update_quality()
   end
-
 
   test "update sulfuras past date" do
     assert [
