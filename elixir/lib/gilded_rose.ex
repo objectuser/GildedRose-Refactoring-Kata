@@ -9,31 +9,31 @@ defmodule GildedRose do
 
   def update_item(%Item{name: "Aged Brie"} = item) do
     item
-    |> (fn
-          %{quality: quality, sell_in: sell_in} = item when sell_in <= 0 ->
-            %{item | quality: quality + 2}
+    |> quality_adjust(fn
+          %{sell_in: sell_in} when sell_in <= 0 ->
+            2
 
-          %{quality: quality} = item ->
-            %{item | quality: quality + 1}
-        end).()
+          _ ->
+            1
+        end)
     |> roll_day()
   end
 
   def update_item(%Item{name: "Backstage passes to a TAFKAL80ETC concert"} = item) do
     item
-    |> (fn
-          %{sell_in: sell_in} = item when sell_in <= 0 ->
-            %{item | quality: 0}
+    |> quality_adjust(fn
+          %{quality: quality, sell_in: sell_in} when sell_in <= 0 ->
+            -quality
 
-          %{quality: quality, sell_in: sell_in} = item when sell_in < 6 ->
-            %{item | quality: quality + 3}
+          %{sell_in: sell_in} when sell_in < 6 ->
+            3
 
-          %{quality: quality, sell_in: sell_in} = item when sell_in < 11 ->
-            %{item | quality: quality + 2}
+          %{sell_in: sell_in} when sell_in < 11 ->
+            2
 
-          %{quality: quality} = item ->
-            %{item | quality: quality + 1}
-        end).()
+          _ ->
+            1
+        end)
     |> roll_day()
   end
 
@@ -41,14 +41,18 @@ defmodule GildedRose do
 
   def update_item(item) do
     item
-    |> (fn
-          %{quality: quality, sell_in: sell_in} = item when sell_in <= 0 ->
-            %{item | quality: quality - 2}
+    |> quality_adjust(fn
+          %{sell_in: sell_in} when sell_in <= 0 ->
+            -2
 
-          %{quality: quality} = item ->
-            %{item | quality: quality - 1}
-        end).()
+          _ ->
+            -1
+        end)
     |> roll_day()
+  end
+
+  def quality_adjust(item, condition) do
+    %{item | quality: item.quality + condition.(item)}
   end
 
   # normalize data and roll to the next day
