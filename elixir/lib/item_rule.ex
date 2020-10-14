@@ -9,7 +9,7 @@ defmodule ItemRule do
           item
       end
 
-    item = %{item | sell_in: item.sell_in - 1}
+    item = decrement_sell_in(item)
 
     cond do
       item.sell_in < 0 ->
@@ -27,53 +27,25 @@ defmodule ItemRule do
   end
 
   def update_item(%Item{name: "Backstage passes to a TAFKAL80ETC concert"} = item) do
-    item =
-      cond do
-        item.quality < 50 ->
-          item = %{item | quality: item.quality + 1}
+    item
+    |> (fn
+          %{sell_in: sell_in} = item when sell_in <= 0 ->
+            %{item | quality: 0}
 
-          item =
-            cond do
-              item.sell_in < 11 ->
-                cond do
-                  item.quality < 50 ->
-                    %{item | quality: item.quality + 1}
+          %{quality: quality} = item when quality >= 50 ->
+            item
 
-                  true ->
-                    item
-                end
+          %{quality: quality, sell_in: sell_in} = item when sell_in < 6 ->
+            %{item | quality: quality + 3}
 
-              true ->
-                item
-            end
+          %{quality: quality, sell_in: sell_in} = item when sell_in < 11 ->
+            %{item | quality: quality + 2}
 
-          cond do
-            item.sell_in < 6 ->
-              cond do
-                item.quality < 50 ->
-                  %{item | quality: item.quality + 1}
-
-                true ->
-                  item
-              end
-
-            true ->
-              item
-          end
-
-        true ->
-          item
-      end
-
-    item = %{item | sell_in: item.sell_in - 1}
-
-    cond do
-      item.sell_in < 0 ->
-        %{item | quality: item.quality - item.quality}
-
-      true ->
-        item
-    end
+          %{quality: quality} = item ->
+            %{item | quality: quality + 1}
+        end).()
+    |> (fn %{quality: quality} = item -> %{item | quality: min(quality, 50)} end).()
+    |> decrement_sell_in()
   end
 
   def update_item(%Item{name: "Sulfuras, Hand of Ragnaros"} = item), do: item
@@ -86,7 +58,7 @@ defmodule ItemRule do
         item
       end
 
-    item = %{item | sell_in: item.sell_in - 1}
+    item = decrement_sell_in(item)
 
     cond do
       item.sell_in < 0 ->
@@ -102,4 +74,6 @@ defmodule ItemRule do
         item
     end
   end
+
+  defp decrement_sell_in(item), do: %{item | sell_in: item.sell_in - 1}
 end
