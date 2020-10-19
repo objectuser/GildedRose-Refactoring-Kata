@@ -51,8 +51,8 @@ defmodule GildedRose do
     |> roll_day()
   end
 
-  def quality_adjust(item, condition) do
-    %{item | quality: item.quality + condition.(item)}
+  def quality_adjust(%{quality: quality} = item, adjustment) do
+    %{item | quality: quality + adjustment.(item)}
   end
 
   # normalize data and roll to the next day
