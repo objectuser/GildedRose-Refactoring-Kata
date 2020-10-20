@@ -39,6 +39,18 @@ defmodule GildedRose do
 
   def update_item(%Item{name: "Sulfuras, Hand of Ragnaros"} = item), do: item
 
+  def update_item(%Item{name: "Conjured"} = item) do
+    item
+    |> quality_adjust(fn
+          %{sell_in: sell_in} when sell_in <= 0 ->
+            -4
+
+          _ ->
+            -2
+        end)
+    |> roll_day()
+  end
+
   def update_item(item) do
     item
     |> quality_adjust(fn

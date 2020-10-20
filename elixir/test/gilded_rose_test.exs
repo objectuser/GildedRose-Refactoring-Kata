@@ -138,4 +138,16 @@ defmodule GildedRoseTest do
              [%Item{name: "squab", quality: 0, sell_in: 0}]
              |> GildedRose.update_quality()
   end
+
+  test "update conjured" do
+    assert [%Item{name: "Conjured", quality: 18, sell_in: 2}] ==
+             [%Item{name: "Conjured", quality: 20, sell_in: 3}]
+             |> GildedRose.update_quality()
+  end
+
+  test "update conjured after sell in" do
+    assert [%Item{name: "Conjured", quality: 16, sell_in: -3}] ==
+             [%Item{name: "Conjured", quality: 20, sell_in: -2}]
+             |> GildedRose.update_quality()
+  end
 end
