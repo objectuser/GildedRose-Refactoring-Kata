@@ -13,7 +13,9 @@ defmodule GildedRose do
     |> roll_day()
   end
 
-  def update_item(%Item{name: "Backstage passes to a TAFKAL80ETC concert", sell_in: sell_in} = item) do
+  def update_item(
+        %Item{name: "Backstage passes to a TAFKAL80ETC concert", sell_in: sell_in} = item
+      ) do
     item
     |> quality_rules_adjuster([{1, -item.quality}, {5, 3}, {10, 2}, {sell_in, 1}])
     |> roll_day()
