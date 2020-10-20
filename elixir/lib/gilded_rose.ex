@@ -7,64 +7,30 @@ defmodule GildedRose do
     Enum.map(items, &update_item/1)
   end
 
-  def update_item(%Item{name: "Aged Brie"} = item) do
+  def update_item(%Item{name: "Aged Brie", sell_in: sell_in} = item) do
     item
-    |> quality_adjust(fn
-          %{sell_in: sell_in} when sell_in <= 0 ->
-            2
-
-          _ ->
-            1
-        end)
+    |> quality_rules_adjuster([{0, 2}, {sell_in, 1}])
     |> roll_day()
   end
 
-  def update_item(%Item{name: "Backstage passes to a TAFKAL80ETC concert"} = item) do
+  def update_item(%Item{name: "Backstage passes to a TAFKAL80ETC concert", sell_in: sell_in} = item) do
     item
-    |> quality_adjust(fn
-          %{quality: quality, sell_in: sell_in} when sell_in <= 0 ->
-            -quality
-
-          %{sell_in: sell_in} when sell_in < 6 ->
-            3
-
-          %{sell_in: sell_in} when sell_in < 11 ->
-            2
-
-          _ ->
-            1
-        end)
+    |> quality_rules_adjuster([{1, -item.quality}, {5, 3}, {10, 2}, {sell_in, 1}])
     |> roll_day()
   end
 
   def update_item(%Item{name: "Sulfuras, Hand of Ragnaros"} = item), do: item
 
-  def update_item(%Item{name: "Conjured"} = item) do
+  def update_item(%Item{name: "Conjured", sell_in: sell_in} = item) do
     item
-    |> quality_adjust(fn
-          %{sell_in: sell_in} when sell_in <= 0 ->
-            -4
-
-          _ ->
-            -2
-        end)
+    |> quality_rules_adjuster([{0, -4}, {sell_in, -2}])
     |> roll_day()
   end
 
-  def update_item(item) do
+  def update_item(%{sell_in: sell_in} = item) do
     item
-    |> quality_adjust(fn
-          %{sell_in: sell_in} when sell_in <= 0 ->
-            -2
-
-          _ ->
-            -1
-        end)
+    |> quality_rules_adjuster([{0, -2}, {sell_in, -1}])
     |> roll_day()
-  end
-
-  def quality_adjust(%{quality: quality} = item, adjustment) do
-    %{item | quality: quality + adjustment.(item)}
   end
 
   # normalize data and roll to the next day
@@ -79,5 +45,15 @@ defmodule GildedRose do
   # Quality is always between 0 and 50
   defp normalize_quality(%{quality: quality} = item) do
     %{item | quality: quality |> min(50) |> max(0)}
+  end
+
+  defp quality_rules_adjuster(item, rules) do
+    rules
+    |> Enum.reduce_while(item, fn {sell_in, adjust}, item ->
+      cond do
+        item.sell_in <= sell_in -> {:halt, %{item | quality: item.quality + adjust}}
+        true -> {:cont, item}
+      end
+    end)
   end
 end
