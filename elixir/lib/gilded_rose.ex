@@ -7,7 +7,7 @@ defmodule GildedRose do
     items
   end
 
-  def update_item(item) do
-    item
+  def update_item(%{quality: quality, sell_in: sell_in} = item) do
+    %{item | quality: quality - 1, sell_in: sell_in - 1}
   end
 end
