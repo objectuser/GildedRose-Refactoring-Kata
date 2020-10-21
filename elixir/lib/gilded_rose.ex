@@ -30,7 +30,9 @@ defmodule GildedRose do
     quality_adjust =
       cond do
         sell_in <= 0 -> 2
-        true -> 2
+        sell_in <= 5 -> 3
+        sell_in <= 10 -> 2
+        true -> 1
       end
 
     quality = compute_quality(quality, quality_adjust)

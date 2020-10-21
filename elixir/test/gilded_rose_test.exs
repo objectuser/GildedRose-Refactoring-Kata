@@ -66,21 +66,20 @@ defmodule GildedRoseTest do
   test "update backstage pass super quality" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
-             quality: 50,
+             quality: 8,
              sell_in: 4
            } ==
-             %Item{name: "Backstage passes to a TAFKAL80ETC concert", quality: 50, sell_in: 5}
+             %Item{name: "Backstage passes to a TAFKAL80ETC concert", quality: 5, sell_in: 5}
              |> GildedRose.update_item()
   end
 
-  @tag :pending
   test "update backstage pass getting close" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
-             quality: 50,
-             sell_in: 11
+             quality: 6,
+             sell_in: 9
            } ==
-             %Item{name: "Backstage passes to a TAFKAL80ETC concert", quality: 49, sell_in: 12}
+             %Item{name: "Backstage passes to a TAFKAL80ETC concert", quality: 4, sell_in: 10}
              |> GildedRose.update_item()
   end
 
