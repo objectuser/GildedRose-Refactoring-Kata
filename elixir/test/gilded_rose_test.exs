@@ -63,7 +63,6 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
-  @tag :pending
   test "update backstage pass super quality" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
