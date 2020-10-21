@@ -1,7 +1,6 @@
 defmodule GildedRoseTest do
   use ExUnit.Case
 
-  @tag :pending
   test "update list of items" do
     assert [
              %Item{name: "squab", quality: 16, sell_in: 2},
@@ -9,7 +8,7 @@ defmodule GildedRoseTest do
            ] ==
              [
                %Item{name: "squab", quality: 17, sell_in: 3},
-               %Item{name: "squab", quality: 15, sell_in: 3}
+               %Item{name: "squab", quality: 15, sell_in: 2}
              ]
              |> GildedRose.update_quality()
   end

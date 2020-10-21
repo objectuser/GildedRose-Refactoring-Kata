@@ -5,6 +5,7 @@ defmodule GildedRose do
 
   def update_quality(items) do
     items
+    |> Enum.map(&update_item/1)
   end
 
   def update_item(%{name: "Conjured", quality: quality, sell_in: sell_in} = item) do
