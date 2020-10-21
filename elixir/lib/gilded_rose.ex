@@ -15,7 +15,7 @@ defmodule GildedRose do
         true -> 1
       end
 
-    quality = max(quality + quality_adjust, 0)
+    quality = compute_quality(quality, quality_adjust)
 
     %{item | quality: quality, sell_in: sell_in - 1}
   end
@@ -27,7 +27,7 @@ defmodule GildedRose do
         true -> -2
       end
 
-    quality = max(quality + quality_adjust, 0)
+    quality = compute_quality(quality, quality_adjust)
 
     %{item | quality: quality, sell_in: sell_in - 1}
   end
@@ -41,8 +41,14 @@ defmodule GildedRose do
         true -> -1
       end
 
-    quality = max(quality + quality_adjust, 0)
+    quality = compute_quality(quality, quality_adjust)
 
     %{item | quality: quality, sell_in: sell_in - 1}
+  end
+
+  defp compute_quality(quality, adjust) do
+    (quality + adjust)
+    |> max(0)
+    |> min(50)
   end
 end
