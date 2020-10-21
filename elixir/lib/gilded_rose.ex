@@ -8,6 +8,12 @@ defmodule GildedRose do
   end
 
   def update_item(%{quality: quality, sell_in: sell_in} = item) do
-    %{item | quality: quality - 1, sell_in: sell_in - 1}
+    quality_adjust =
+      cond do
+        sell_in <= 0 -> -2
+        true -> -1
+      end
+
+    %{item | quality: quality + quality_adjust, sell_in: sell_in - 1}
   end
 end
