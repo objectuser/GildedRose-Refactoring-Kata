@@ -102,7 +102,6 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
-  @tag :pending
   test "update sulfuras" do
     assert %Item{
              name: "Sulfuras, Hand of Ragnaros",
@@ -113,7 +112,6 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
-  @tag :pending
   test "update sulfuras past date" do
     assert %Item{
              name: "Sulfuras, Hand of Ragnaros",

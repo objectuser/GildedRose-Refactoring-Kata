@@ -19,6 +19,8 @@ defmodule GildedRose do
     %{item | quality: quality, sell_in: sell_in - 1}
   end
 
+  def update_item(%{name: "Sulfuras, Hand of Ragnaros"} = item), do: item
+
   def update_item(%{quality: quality, sell_in: sell_in} = item) do
     quality_adjust =
       cond do
