@@ -14,6 +14,8 @@ defmodule GildedRose do
         true -> -1
       end
 
-    %{item | quality: quality + quality_adjust, sell_in: sell_in - 1}
+    quality = max(quality + quality_adjust, 0)
+
+    %{item | quality: quality, sell_in: sell_in - 1}
   end
 end

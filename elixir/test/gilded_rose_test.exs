@@ -136,7 +136,6 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
-  @tag :pending
   test "update squab after sell in with low quality" do
     assert %Item{name: "squab", quality: 0, sell_in: -1} ==
              %Item{name: "squab", quality: 0, sell_in: 0}
