@@ -13,7 +13,6 @@ defmodule GildedRoseTest do
              |> GildedRose.update_quality()
   end
 
-  @tag :pending
   test "update brie" do
     assert %Item{
              name: "Aged Brie",
@@ -24,7 +23,6 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
-  @tag :pending
   test "update brie past due" do
     assert %Item{
              name: "Aged Brie",

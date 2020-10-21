@@ -8,6 +8,18 @@ defmodule GildedRose do
     |> Enum.map(&update_item/1)
   end
 
+  def update_item(%{name: "Aged Brie", quality: quality, sell_in: sell_in} = item) do
+    quality_adjust =
+      cond do
+        sell_in <= 0 -> 2
+        true -> 1
+      end
+
+    quality = max(quality + quality_adjust, 0)
+
+    %{item | quality: quality, sell_in: sell_in - 1}
+  end
+
   def update_item(%{name: "Conjured", quality: quality, sell_in: sell_in} = item) do
     quality_adjust =
       cond do
