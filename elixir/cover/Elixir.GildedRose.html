@@ -103,7 +103,7 @@ td.source {
 </head>
 <body>
 <h1><code>cover/Elixir.GildedRose.html</code></h1>
-<footer><p>File generated from <code>/Users/Kevin/Documents/Projects/gilded-rose-kata/GildedRose-Refactoring-Kata/elixir/lib/gilded_rose.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-10-21 at 07:44:58</p></footer>
+<footer><p>File generated from <code>/Users/Kevin/Documents/Projects/gilded-rose-kata/GildedRose-Refactoring-Kata/elixir/lib/gilded_rose.ex</code> by <a href="http://erlang.org/doc/man/cover.html">cover</a> at 2020-10-21 at 07:56:29</p></footer>
 <table>
 <tbody>
 <tr>
@@ -253,7 +253,7 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L30"><a href="#L30">30</a></td>
-<td class="hits">1</td>
+<td class="hits">5</td>
 <td class="source"><code>    quality_adjust =</code></td>
 </tr>
 <tr>
@@ -261,30 +261,30 @@ td.source {
 <td class="hits"></td>
 <td class="source"><code>      cond do</code></td>
 </tr>
-<tr>
+<tr class="hit">
 <td class="line" id="L32"><a href="#L32">32</a></td>
-<td class="hits"></td>
-<td class="source"><code>        sell_in &lt;= 0 -&gt; 2</code></td>
+<td class="hits">1</td>
+<td class="source"><code>        sell_in &lt;= 0 -&gt; -quality</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L33"><a href="#L33">33</a></td>
-<td class="hits">1</td>
-<td class="source"><code>        true -&gt; 2</code></td>
-</tr>
-<tr>
-<td class="line" id="L34"><a href="#L34">34</a></td>
-<td class="hits"></td>
-<td class="source"><code>      end</code></td>
-</tr>
-<tr>
-<td class="line" id="L35"><a href="#L35">35</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
+<td class="hits">4</td>
+<td class="source"><code>        sell_in &lt;= 5 -&gt; 3</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L36"><a href="#L36">36</a></td>
+<td class="line" id="L34"><a href="#L34">34</a></td>
+<td class="hits">2</td>
+<td class="source"><code>        sell_in &lt;= 10 -&gt; 2</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L35"><a href="#L35">35</a></td>
 <td class="hits">1</td>
-<td class="source"><code>    quality = compute_quality(quality, quality_adjust)</code></td>
+<td class="source"><code>        true -&gt; 1</code></td>
+</tr>
+<tr>
+<td class="line" id="L36"><a href="#L36">36</a></td>
+<td class="hits"></td>
+<td class="source"><code>      end</code></td>
 </tr>
 <tr>
 <td class="line" id="L37"><a href="#L37">37</a></td>
@@ -293,58 +293,58 @@ td.source {
 </tr>
 <tr class="hit">
 <td class="line" id="L38"><a href="#L38">38</a></td>
-<td class="hits">1</td>
-<td class="source"><code>    %{item | quality: quality, sell_in: sell_in - 1}</code></td>
+<td class="hits">5</td>
+<td class="source"><code>    quality = compute_quality(quality, quality_adjust)</code></td>
 </tr>
 <tr>
 <td class="line" id="L39"><a href="#L39">39</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L40"><a href="#L40">40</a></td>
-<td class="hits"></td>
 <td class="source"><code></code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L40"><a href="#L40">40</a></td>
+<td class="hits">5</td>
+<td class="source"><code>    %{item | quality: quality, sell_in: sell_in - 1}</code></td>
 </tr>
 <tr>
 <td class="line" id="L41"><a href="#L41">41</a></td>
 <td class="hits"></td>
-<td class="source"><code>  def update_item(%{name: "Conjured", quality: quality, sell_in: sell_in} = item) do</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
-<tr class="hit">
+<tr>
 <td class="line" id="L42"><a href="#L42">42</a></td>
-<td class="hits">2</td>
-<td class="source"><code>    quality_adjust =</code></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L43"><a href="#L43">43</a></td>
 <td class="hits"></td>
-<td class="source"><code>      cond do</code></td>
+<td class="source"><code>  def update_item(%{name: "Conjured", quality: quality, sell_in: sell_in} = item) do</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L44"><a href="#L44">44</a></td>
+<td class="hits">2</td>
+<td class="source"><code>    quality_adjust =</code></td>
+</tr>
+<tr>
+<td class="line" id="L45"><a href="#L45">45</a></td>
+<td class="hits"></td>
+<td class="source"><code>      cond do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L46"><a href="#L46">46</a></td>
 <td class="hits">1</td>
 <td class="source"><code>        sell_in &lt;= 0 -&gt; -4</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L45"><a href="#L45">45</a></td>
+<td class="line" id="L47"><a href="#L47">47</a></td>
 <td class="hits">1</td>
 <td class="source"><code>        true -&gt; -2</code></td>
 </tr>
 <tr>
-<td class="line" id="L46"><a href="#L46">46</a></td>
+<td class="line" id="L48"><a href="#L48">48</a></td>
 <td class="hits"></td>
 <td class="source"><code>      end</code></td>
-</tr>
-<tr>
-<td class="line" id="L47"><a href="#L47">47</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L48"><a href="#L48">48</a></td>
-<td class="hits">2</td>
-<td class="source"><code>    quality = compute_quality(quality, quality_adjust)</code></td>
 </tr>
 <tr>
 <td class="line" id="L49"><a href="#L49">49</a></td>
@@ -354,67 +354,67 @@ td.source {
 <tr class="hit">
 <td class="line" id="L50"><a href="#L50">50</a></td>
 <td class="hits">2</td>
-<td class="source"><code>    %{item | quality: quality, sell_in: sell_in - 1}</code></td>
+<td class="source"><code>    quality = compute_quality(quality, quality_adjust)</code></td>
 </tr>
 <tr>
 <td class="line" id="L51"><a href="#L51">51</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L52"><a href="#L52">52</a></td>
-<td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L53"><a href="#L53">53</a></td>
+<td class="line" id="L52"><a href="#L52">52</a></td>
 <td class="hits">2</td>
-<td class="source"><code>  def update_item(%{name: "Sulfuras, Hand of Ragnaros"} = item), do: item</code></td>
+<td class="source"><code>    %{item | quality: quality, sell_in: sell_in - 1}</code></td>
+</tr>
+<tr>
+<td class="line" id="L53"><a href="#L53">53</a></td>
+<td class="hits"></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L54"><a href="#L54">54</a></td>
 <td class="hits"></td>
 <td class="source"><code></code></td>
 </tr>
-<tr>
-<td class="line" id="L55"><a href="#L55">55</a></td>
-<td class="hits"></td>
-<td class="source"><code>  def update_item(%{quality: quality, sell_in: sell_in} = item) do</code></td>
-</tr>
 <tr class="hit">
+<td class="line" id="L55"><a href="#L55">55</a></td>
+<td class="hits">2</td>
+<td class="source"><code>  def update_item(%{name: "Sulfuras, Hand of Ragnaros"} = item), do: item</code></td>
+</tr>
+<tr>
 <td class="line" id="L56"><a href="#L56">56</a></td>
-<td class="hits">5</td>
-<td class="source"><code>    quality_adjust =</code></td>
+<td class="hits"></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L57"><a href="#L57">57</a></td>
 <td class="hits"></td>
-<td class="source"><code>      cond do</code></td>
+<td class="source"><code>  def update_item(%{quality: quality, sell_in: sell_in} = item) do</code></td>
 </tr>
 <tr class="hit">
 <td class="line" id="L58"><a href="#L58">58</a></td>
+<td class="hits">5</td>
+<td class="source"><code>    quality_adjust =</code></td>
+</tr>
+<tr>
+<td class="line" id="L59"><a href="#L59">59</a></td>
+<td class="hits"></td>
+<td class="source"><code>      cond do</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L60"><a href="#L60">60</a></td>
 <td class="hits">2</td>
 <td class="source"><code>        sell_in &lt;= 0 -&gt; -2</code></td>
 </tr>
 <tr class="hit">
-<td class="line" id="L59"><a href="#L59">59</a></td>
+<td class="line" id="L61"><a href="#L61">61</a></td>
 <td class="hits">3</td>
 <td class="source"><code>        true -&gt; -1</code></td>
 </tr>
 <tr>
-<td class="line" id="L60"><a href="#L60">60</a></td>
+<td class="line" id="L62"><a href="#L62">62</a></td>
 <td class="hits"></td>
 <td class="source"><code>      end</code></td>
-</tr>
-<tr>
-<td class="line" id="L61"><a href="#L61">61</a></td>
-<td class="hits"></td>
-<td class="source"><code></code></td>
-</tr>
-<tr class="hit">
-<td class="line" id="L62"><a href="#L62">62</a></td>
-<td class="hits">5</td>
-<td class="source"><code>    quality = compute_quality(quality, quality_adjust)</code></td>
 </tr>
 <tr>
 <td class="line" id="L63"><a href="#L63">63</a></td>
@@ -424,45 +424,55 @@ td.source {
 <tr class="hit">
 <td class="line" id="L64"><a href="#L64">64</a></td>
 <td class="hits">5</td>
-<td class="source"><code>    %{item | quality: quality, sell_in: sell_in - 1}</code></td>
+<td class="source"><code>    quality = compute_quality(quality, quality_adjust)</code></td>
 </tr>
 <tr>
 <td class="line" id="L65"><a href="#L65">65</a></td>
 <td class="hits"></td>
-<td class="source"><code>  end</code></td>
-</tr>
-<tr>
-<td class="line" id="L66"><a href="#L66">66</a></td>
-<td class="hits"></td>
 <td class="source"><code></code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L66"><a href="#L66">66</a></td>
+<td class="hits">5</td>
+<td class="source"><code>    %{item | quality: quality, sell_in: sell_in - 1}</code></td>
 </tr>
 <tr>
 <td class="line" id="L67"><a href="#L67">67</a></td>
 <td class="hits"></td>
-<td class="source"><code>  defp compute_quality(quality, adjust) do</code></td>
+<td class="source"><code>  end</code></td>
 </tr>
 <tr>
 <td class="line" id="L68"><a href="#L68">68</a></td>
 <td class="hits"></td>
-<td class="source"><code>    (quality + adjust)</code></td>
+<td class="source"><code></code></td>
 </tr>
 <tr>
 <td class="line" id="L69"><a href="#L69">69</a></td>
 <td class="hits"></td>
-<td class="source"><code>    |&gt; max(0)</code></td>
+<td class="source"><code>  defp compute_quality(quality, adjust) do</code></td>
 </tr>
-<tr class="hit">
+<tr>
 <td class="line" id="L70"><a href="#L70">70</a></td>
-<td class="hits">11</td>
-<td class="source"><code>    |&gt; min(50)</code></td>
+<td class="hits"></td>
+<td class="source"><code>    (quality + adjust)</code></td>
 </tr>
 <tr>
 <td class="line" id="L71"><a href="#L71">71</a></td>
 <td class="hits"></td>
+<td class="source"><code>    |&gt; max(0)</code></td>
+</tr>
+<tr class="hit">
+<td class="line" id="L72"><a href="#L72">72</a></td>
+<td class="hits">15</td>
+<td class="source"><code>    |&gt; min(50)</code></td>
+</tr>
+<tr>
+<td class="line" id="L73"><a href="#L73">73</a></td>
+<td class="hits"></td>
 <td class="source"><code>  end</code></td>
 </tr>
 <tr>
-<td class="line" id="L72"><a href="#L72">72</a></td>
+<td class="line" id="L74"><a href="#L74">74</a></td>
 <td class="hits"></td>
 <td class="source"><code>end</code></td>
 </tr>

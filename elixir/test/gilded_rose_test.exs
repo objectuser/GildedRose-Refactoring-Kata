@@ -46,10 +46,10 @@ defmodule GildedRoseTest do
   test "update backstage pass" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
-             quality: 3,
-             sell_in: 8
+             quality: 2,
+             sell_in: 19
            } ==
-             %Item{name: "Backstage passes to a TAFKAL80ETC concert", quality: 1, sell_in: 9}
+             %Item{name: "Backstage passes to a TAFKAL80ETC concert", quality: 1, sell_in: 20}
              |> GildedRose.update_item()
   end
 
