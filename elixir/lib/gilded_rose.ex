@@ -7,6 +7,18 @@ defmodule GildedRose do
     items
   end
 
+  def update_item(%{name: "Conjured", quality: quality, sell_in: sell_in} = item) do
+    quality_adjust =
+      cond do
+        sell_in <= 0 -> -4
+        true -> -2
+      end
+
+    quality = max(quality + quality_adjust, 0)
+
+    %{item | quality: quality, sell_in: sell_in - 1}
+  end
+
   def update_item(%{quality: quality, sell_in: sell_in} = item) do
     quality_adjust =
       cond do
