@@ -1,6 +1,7 @@
 defmodule GildedRoseTest do
   use ExUnit.Case
 
+  @tag :pending
   test "update list of items" do
     assert [
              %Item{name: "squab", quality: 16, sell_in: 2},
@@ -13,6 +14,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_quality()
   end
 
+  @tag :pending
   test "update brie" do
     assert %Item{
              name: "Aged Brie",
@@ -23,6 +25,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update brie past due" do
     assert %Item{
              name: "Aged Brie",
@@ -33,6 +36,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update brie high quality" do
     assert %Item{
              name: "Aged Brie",
@@ -43,6 +47,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update backstage pass" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
@@ -53,6 +58,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update backstage pass totally hyped" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
@@ -63,6 +69,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update backstage pass super quality" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
@@ -73,6 +80,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update backstage pass getting close" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
@@ -83,6 +91,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update backstage pass after event" do
     assert %Item{
              name: "Backstage passes to a TAFKAL80ETC concert",
@@ -93,6 +102,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update sulfuras" do
     assert %Item{
              name: "Sulfuras, Hand of Ragnaros",
@@ -103,6 +113,7 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update sulfuras past date" do
     assert %Item{
              name: "Sulfuras, Hand of Ragnaros",
@@ -125,18 +136,21 @@ defmodule GildedRoseTest do
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update squab after sell in with low quality" do
     assert %Item{name: "squab", quality: 0, sell_in: -1} ==
              %Item{name: "squab", quality: 0, sell_in: 0}
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update conjured" do
     assert %Item{name: "Conjured", quality: 18, sell_in: 2} ==
              %Item{name: "Conjured", quality: 20, sell_in: 3}
              |> GildedRose.update_item()
   end
 
+  @tag :pending
   test "update conjured after sell in" do
     assert %Item{name: "Conjured", quality: 16, sell_in: -3} ==
              %Item{name: "Conjured", quality: 20, sell_in: -2}
