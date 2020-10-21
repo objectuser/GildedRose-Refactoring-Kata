@@ -29,7 +29,7 @@ defmodule GildedRose do
   def update_item(%{name: "Backstage passes to a TAFKAL80ETC concert", quality: quality, sell_in: sell_in} = item) do
     quality_adjust =
       cond do
-        sell_in <= 0 -> 2
+        sell_in <= 0 -> -quality
         sell_in <= 5 -> 3
         sell_in <= 10 -> 2
         true -> 1
