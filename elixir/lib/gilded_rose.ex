@@ -14,56 +14,63 @@ defmodule GildedRose do
   @doc """
   Update the quality and sell in of the given item
   """
-  def update_item(%{name: "Aged Brie", quality: quality, sell_in: sell_in} = item) do
-    quality_adjust =
+  def update_item(%{name: "Aged Brie", sell_in: sell_in} = item) do
+    item
+    |> adjust_quality(fn ->
       cond do
         sell_in <= 0 -> 2
         true -> 1
       end
-
-    quality = compute_quality(quality, quality_adjust)
-
-    %{item | quality: quality, sell_in: sell_in - 1}
+    end)
+    |> adjust_sell_in()
   end
 
-  def update_item(%{name: "Backstage passes to a TAFKAL80ETC concert", quality: quality, sell_in: sell_in} = item) do
-    quality_adjust =
+  def update_item(
+        %{name: "Backstage passes to a TAFKAL80ETC concert", quality: quality, sell_in: sell_in} =
+          item
+      ) do
+    item
+    |> adjust_quality(fn ->
       cond do
         sell_in <= 0 -> -quality
         sell_in <= 5 -> 3
         sell_in <= 10 -> 2
         true -> 1
       end
-
-    quality = compute_quality(quality, quality_adjust)
-
-    %{item | quality: quality, sell_in: sell_in - 1}
+    end)
+    |> adjust_sell_in()
   end
 
-  def update_item(%{name: "Conjured", quality: quality, sell_in: sell_in} = item) do
-    quality_adjust =
+  def update_item(%{name: "Conjured", sell_in: sell_in} = item) do
+    item
+    |> adjust_quality(fn ->
       cond do
         sell_in <= 0 -> -4
         true -> -2
       end
-
-    quality = compute_quality(quality, quality_adjust)
-
-    %{item | quality: quality, sell_in: sell_in - 1}
+    end)
+    |> adjust_sell_in()
   end
 
   def update_item(%{name: "Sulfuras, Hand of Ragnaros"} = item), do: item
 
-  def update_item(%{quality: quality, sell_in: sell_in} = item) do
-    quality_adjust =
+  def update_item(%{sell_in: sell_in} = item) do
+    item
+    |> adjust_quality(fn ->
       cond do
         sell_in <= 0 -> -2
         true -> -1
       end
+    end)
+    |> adjust_sell_in()
+  end
 
-    quality = compute_quality(quality, quality_adjust)
+  defp adjust_quality(%{quality: quality} = item, adjuster) do
+    %{item | quality: compute_quality(quality, adjuster.())}
+  end
 
-    %{item | quality: quality, sell_in: sell_in - 1}
+  defp adjust_sell_in(%{sell_in: sell_in} = item) do
+    %{item | sell_in: sell_in - 1}
   end
 
   defp compute_quality(quality, adjust) do
